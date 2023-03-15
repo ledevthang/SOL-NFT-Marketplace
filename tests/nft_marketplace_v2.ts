@@ -28,9 +28,9 @@ describe("nft_marketplace_v2", () => {
     let buyer;
     let state_account;
     it("Init state!", async () => {
-        owner = await createKeypairFromFile(__dirname + "/../../../../tungleanh/.config/solana/id.json");
+        owner = await createKeypairFromFile(__dirname + "/../../../../../tungle/.config/solana/id.json");
 
-        state_account = await createKeypairFromFile(__dirname + "/../../../my-solana-wallet/state_account.json");
+        state_account = await createKeypairFromFile(__dirname + "/../../../../my-solana-wallet/state_account.json");
         await program.methods.initState(10).accounts({
             stateAccount: state_account.publicKey,
             user: owner.publicKey,
@@ -42,13 +42,13 @@ describe("nft_marketplace_v2", () => {
     });
 
     it("Mint", async () => {
-        owner = await createKeypairFromFile(__dirname + "/../../../../tungleanh/.config/solana/id.json");
+        owner = await createKeypairFromFile(__dirname + "/../../../../../tungle/.config/solana/id.json");
 
         minterNft1 = await createMint(provider.connection, owner, owner.publicKey, null, 0)
         minterNft2 = await createMint(provider.connection, owner, owner.publicKey, null, 0)
         minterNft3 = await createMint(provider.connection, owner, owner.publicKey, null, 0)
 
-        buyer = await createKeypairFromFile(__dirname + "/../../../my-solana-wallet/my-keypair.json");
+        buyer = await createKeypairFromFile(__dirname + "/../../../../my-solana-wallet/my-keypair.json");
         await provider.connection.requestAirdrop(buyer.publicKey, 1e9);
 
         tokenAccount1 = await createAssociatedTokenAccount(
@@ -101,7 +101,7 @@ describe("nft_marketplace_v2", () => {
     })
 
     it("Create listing", async () => {
-        buyer = await createKeypairFromFile(__dirname + "/../../../my-solana-wallet/my-keypair.json");
+        buyer = await createKeypairFromFile(__dirname + "/../../../../my-solana-wallet/my-keypair.json");
         let id_1 = 1;
         let id_2 = 2;
         let id_3 = 3;
